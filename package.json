@@ -1,0 +1,21 @@
+{
+  "name": "bbb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server_bbb.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bytes": "^3.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "hdd-space": "^1.2.0",
+    "node-fetch": "^2.6.1",
+    "systeminformation": "^4.30.1"
+  }
+}
