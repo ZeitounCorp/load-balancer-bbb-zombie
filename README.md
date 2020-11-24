@@ -2,7 +2,7 @@
 This repository comes from the main project [/ZeitounCorp/load-balancer/servers/BBB](https://github.com/ZeitounCorp/load-balancer)
 
 ## Post-install requirements
-- ```cd load-balancer-bbb-zombie```
+- ```cd ~/load-balancer-bbb-zombie```
 - ```touch .authorized_servers.json .env```
 
 ### .authorized_servers.json
