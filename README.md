@@ -1,6 +1,9 @@
 ## load-balancer-bbb-zombie
 This repository comes from the main project [/ZeitounCorp/load-balancer/servers/BBB](https://github.com/ZeitounCorp/load-balancer)
 
+## Auto-Install script
+-```curl -o- https://raw.githubusercontent.com/ZeitounCorp/load-balancer/master/install_passive.sh | bash``` 
+
 ## Post-install requirements
 - ```cd ~/load-balancer-bbb-zombie```
 - ```touch .authorized_servers.json .env```
