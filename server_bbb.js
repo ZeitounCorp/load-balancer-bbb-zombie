@@ -1,6 +1,6 @@
 require('dotenv').config()
 const cors = require("cors");
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 5555;
 
 const authorized_servers = require('./.authorized_servers.json');
 
