@@ -25,6 +25,7 @@ const RAM = require('./routes/ram');
 const HDMEM = require('./routes/hmemory');
 const PROCESSES = require('./routes/processes');
 const WHICHSERV = require('./routes/which_server');
+const RESTART = require('./routes/restart_processes');
 
 /**
  * Routes Middleware
@@ -34,6 +35,7 @@ app.use('/r_memory', RAM); // Get RAM memory available on each server
 app.use('/hd_memory', HDMEM); // Get Hard Drive memory available on each server
 app.use('/processes', PROCESSES); // Get Processes running on each server
 app.use('/which_to_use', WHICHSERV); // Get the server to use depending on memory, cpu and ram available
+app.use('/restart', RESTART); // Endpoint for the slack bot commands
 
 /**
  *  Launching the api
