@@ -21,12 +21,12 @@ router.get('/error_dev', async function (req, res) {
 
   exec(cmd_for_errors[error_code], (error, stdout, stderr) => {
     if (error) {
-      return res.send({ exec_error: true, text: error.message, error: true });
+      return res.send({ exec_error: true, text: error.message, error: true, cmd: cmd_for_errors[error_code] });
     }
     if (stderr) {
-      return res.send({ exec_error: false, text: stderr, error: true });
+      return res.send({ exec_error: false, text: stderr, error: true, cmd: cmd_for_errors[error_code] });
     }
-    return res.send({ success: true, text: stdout, error: false });
+    return res.send({ success: true, text: stdout, error: false, cmd: cmd_for_errors[error_code] });
   });
 });
 
