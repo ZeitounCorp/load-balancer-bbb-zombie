@@ -30,6 +30,25 @@ router.get('/error_dev', async function (req, res) {
   });
 });
 
+router.get('/error_muggles', async function (req, res) {
+  if (!req.headers['api_key'] || req.headers['api_key'] !== process.env.API_KEY) return res.send({ text: api_key_missing, error: true });
+
+  // Get the error_codes from the request body in order to execute the associated fix 
+  const { error_codes } = req.body;
+
+  for (let i = 0; i < error_codes.length; i++) {
+    exec(cmd_for_errors[error_codes[i]], (error, stdout, stderr) => {
+      if (error) {
+        return res.send({ exec_error: true, text: error.message, error: true, cmd: cmd_for_errors[error_codes[i]] });
+      }
+      if (stderr) {
+        return res.send({ exec_error: false, text: stderr, error: true, cmd: cmd_for_errors[error_codes[i]] });
+      }
+      return res.send({ success: true, text: stdout, error: false, cmd: cmd_for_errors[error_codes[i]] });
+    });
+  }
+});
+
 
 
 
