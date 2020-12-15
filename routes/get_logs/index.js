@@ -12,7 +12,7 @@ const channel_id = "C01GB3Q0HC6"; // => monitoring-bot-channel
 const slack_upload_endpoint = "https://slack.com/api/files.upload";
 const bot_token = "YOUR_TOKEN";
 
-router.get('/error_dev', async function (req, res) {
+router.get('/logs_dev', async function (req, res) {
   if (!req.headers['api_key'] || req.headers['api_key'] !== process.env.API_KEY) return res.send({ text: api_key_missing, error: true });
 
   const { error_level } = req.body;
