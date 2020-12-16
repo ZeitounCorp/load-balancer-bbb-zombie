@@ -48,7 +48,7 @@ function createSlicedLogFile(data = [], error_level, res) {
   const asString = data.join('\n');
   const uniq = Date.now();
   fs.writeFile(path.join(__dirname, `tmp/log_${uniq}.txt`), asString, function (err) { console.log(err) });
-  exec(`cd ${path.join(__dirname, 'tmp/')} && curl -F file=@log_${uniq}.txt -F "initial_comment=New Log Generated, ERROR_LVL: ${error_level.toUpperCase()}" -F channels=${channel_id} -H "Authorization: Bearer ${bot_token}" ${slack_upload_endpoint}`, (error, stdout, stderr) => {
+  exec(`cd ${path.join(__dirname, 'tmp/')} && curl -s -F file=@log_${uniq}.txt -F "initial_comment=New Log Generated, ERROR_LVL: ${error_level.toUpperCase()}" -F channels=${channel_id} -H "Authorization: Bearer ${bot_token}" ${slack_upload_endpoint}`, (error, stdout, stderr) => {
     if (error) {
       return res.send({ exec_error: true, text: error.message, error: true });
     }
@@ -56,6 +56,16 @@ function createSlicedLogFile(data = [], error_level, res) {
       return res.send({ exec_error: false, text: stderr, error: true });
     }
 
-      return res.send({ success: true, text: stdout, error: false });
+    fs.unlink(path.join(__dirname, `tmp/log_${uniq}.txt`), (err) => {
+      if (err) {
+        console.log(err);
+        return res.send({ success: false, text: 'Couldn\'t delete logfile from tmp', error: true });
+      } else {
+        console.log('trade contract was locally deleted');
+        return res.send({ success: true, text: stdout, error: false });
+      }
+    });
   });
 }
+
+module.exports = router;
