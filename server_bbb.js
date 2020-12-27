@@ -29,6 +29,11 @@ const RESTART = require('./routes/restart_processes');
 const LOGS = require('./routes/get_logs');
 
 /**
+ * Tasks' import
+ */
+require('./tasks');
+
+/**
  * Routes Middleware
  */
 app.use('/cpu_usage', CPU); // Get Cpu Usage for BBB each server
