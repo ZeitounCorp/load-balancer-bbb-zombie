@@ -10,7 +10,7 @@ const error_logs_lvls = ['DEBUG', 'INFO', 'NOTICE', 'WARN', 'ERROR', 'CRIT', 'AL
 // Slack details
 const channel_id = "C01GB3Q0HC6"; // => monitoring-bot-channel
 const slack_upload_endpoint = "https://slack.com/api/files.upload";
-const bot_token = "YOUR_TOKEN";
+const bot_token = process.env.SLACK_BOT_TOKEN || "YOUR_BOT_TOKEN";
 
 router.get('/logs_dev', async function (req, res) {
   if (!req.headers['api_key'] || req.headers['api_key'] !== process.env.API_KEY) return res.send({ text: api_key_missing, error: true });

@@ -7,7 +7,7 @@ const follower = follow('/var/log/syslog');
 // Errors we want to receive an alert for
 const error_logs_lvls = ['ERROR', 'CRIT', 'ALERT', 'EMERG'];
 // Slack details
-const slack_webhook_endpoint = "YOUR_SLACK_WEBHOOK_URL";
+const slack_webhook_endpoint = process.env.SLACK_WEBHOOK || "YOUR_SLACK_WEBHOOK";
 
 NginxConfFile.create('/etc/nginx/sites-available/bigbluebutton', async (err, conf) => {
   if (err) {
