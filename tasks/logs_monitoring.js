@@ -14,7 +14,7 @@ NginxConfFile.create('/etc/nginx/sites-available/bigbluebutton', async (err, con
     return err;
   }
   follower.on('line', async function (filename, line) {
-    if (error_logs_lvls.some(t => line.includes(t || t.toLowerCase()))); {
+    if (error_logs_lvls.some(t => line.includes(t))); {
       return await axios.post(slack_webhook_endpoint, {
         "blocks": [
           {
