@@ -27,6 +27,7 @@ const PROCESSES = require('./routes/processes');
 const WHICHSERV = require('./routes/which_server');
 const RESTART = require('./routes/restart_processes');
 const LOGS = require('./routes/get_logs');
+const ENHANCED = require('./routes/enhanced');
 
 /**
  * Tasks' import
@@ -43,6 +44,7 @@ app.use('/processes', PROCESSES); // Get Processes running on each server
 app.use('/which_to_use', WHICHSERV); // Get the server to use depending on memory, cpu and ram available
 app.use('/restart', RESTART); // Endpoint for the slack bot commands
 app.use('/get_logs', LOGS); // Endpoint for the slack scrapping bot
+app.use('/enhanced', ENHANCED);
 
 /**
  *  Launching the api

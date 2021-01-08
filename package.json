@@ -19,6 +19,7 @@
     "nginx-conf": "^1.6.0",
     "node-fetch": "^2.6.1",
     "systeminformation": "^4.33.1",
-    "text-file-follower": "^0.1.0"
+    "text-file-follower": "^0.1.0",
+    "ws": "^7.4.2"
   }
 }
